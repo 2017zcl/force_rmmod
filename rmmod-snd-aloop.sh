@@ -1,1 +1,4 @@
-cd /root/x264 && ./configure && make && make install && cd /root/ffmpeg && ./configure --enable-libx264 && make clean && make && make install && cd /root/v4l2loopback && make && make install && modprobe v4l2loopback video_nr=210 && cd / && modprobe snd_aloop && /bin/bash
+cd /root/force_rmmod \
+    && insmod force_rmmod.ko modname=snd_aloop \
+    && rmmod snd_aloop \
+    && rmmod force_rmmod
